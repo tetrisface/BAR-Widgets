@@ -10,7 +10,6 @@ There are **two ways** to contribute:
     - Fork this repository and add a git submodule to your own repository, then create a PR to add your submodule to the hub.
     - **Note:** If you have multiple widgets in the same repository, *each update* will require *all* widgets to be approved at the same time, which can slow down the process.
 
-
 # Required Widget Structure
 
 ```
@@ -22,11 +21,9 @@ There are **two ways** to contribute:
   └─ <other_files_allowed_up_to_a_point> # You are not limited to a single file, but try to keep it within reason
 ```
 
-
 The widget directory name is the widget ID. It must be globally unique, lower snake case, and include a scope prefix such as `gui_`, `cmd_`, `unit_`, or `map_`. The `id` in `manifest.json` must match this directory name exactly, for example `gui_lower_snake_case`.
 
 Each widget directory must stay under 5 MiB.
-
 
 
 ## manifest.json
@@ -50,7 +47,9 @@ Your `manifest.json` must include the following fields:
 
 The `last_updated` field is an ISO 8601 timestamp used to sort widgets by recency. Update it whenever you publish a new version.
 
-The merged catalog is validated during the build against [builder/schemas/manifests.schema.json](builder/schemas/manifests.schema.json). The same schema is copied into the generated `build/` output as `manifests.schema.json`.
+## Verify
+
+It is recommended to verify your widget by running `docker compose --profile=tool run --rm builder` before submitting a PR.
 
 # License
 
